@@ -1,0 +1,28 @@
+Set up instructions
+
+Install node (If you don't already have it)
+	brew update
+	brew install node
+
+Install and setup MongoDB
+	brew install mongodb
+	
+	Create data directory
+		mkdir -p /data/db
+
+	Set permissions for data directory 
+		chown -R username /data/db
+
+	Run mongodb
+		mongod
+
+	Before running, may need to add /data/db to your path
+		PATH="$PATH":/data/db/
+
+To build application and run it
+	grunt - for building
+	grunt serve - for preview
+	grunt serve:dist - for preview of built app
+
+See https://github.com/DaftMonk/generator-angular-fullstack for more details 
+	
