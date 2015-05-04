@@ -1,7 +1,11 @@
 
 <div ng-controller="MapCtrl">
   <div id="map"></div>
-  
+  <div id="panels" ng-repeat="place in places">
+    <p id="place-name">{{ place.name }}</p>
+    <img ng-src="{{ place.img }}"></img>
+    <div id="description"><p>{{ place.description }}</p></div>
+  </div>
 </div>
 
 

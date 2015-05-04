@@ -1,44 +1,32 @@
 'use strict';
 
-//Data
-var cities = [
-    {
-        city : 'Toronto',
-        desc : 'This is the best city in the world!',
-        lat : 43.7000,
-        long : -79.4000
-    },
-    {
-        city : 'New York',
-        desc : 'This city is aiiiiite!',
-        lat : 40.6700,
-        long : -73.9400
-    },
-    {
-        city : 'Chicago',
-        desc : 'This is the second best city in the world!',
-        lat : 41.8819,
-        long : -87.6278
-    },
-    {
-        city : 'Los Angeles',
-        desc : 'This city is live!',
-        lat : 34.0500,
-        long : -118.2500
-    },
-    {
-        city : 'Las Vegas',
-        desc : 'Sin City...\'nuff said!',
-        lat : 36.0800,
-        long : -115.1522
-    }
-];
 
 angular.module('travelbotApp')
   .controller('MapCtrl', function ($scope) {
+  	$scope.places = [
+		{
+			name: 'Cloud gate',
+			img: 'assets/images/cloudgate800.jpg',
+			description: 'Cloud Gate is a public sculpture by Indian-born British artist Anish Kapoor, that is the ' +
+				'centerpiece of AT&T Plaza at Millennium Park in the Loop community area of Chicago, Illinois. ' +
+				'The sculpture and AT&T Plaza are located on top of Park Grill, between the Chase Promenade and ' +
+				'McCormick Tribune Plaza & Ice Rink. Constructed between 2004 and 2006, the sculpture is nicknamed ' +
+				'The Bean because of its bean-like shape. Made up of 168 stainless steel plates welded together, ' +
+				'its highly polished exterior has no visible seams. It measures 33 by 66 by 42 feet (10 by 20 by 13 m), ' +
+				'and weighs 110 short tons (100 t; 98 long tons).'
+		}
+	];
+
+  	var cities = [{
+  		name: 'Chicago',
+  		latitude: 41.8731862,
+  		longitude: -87.6253513,
+  		zoom: 13
+  	}];
+
     var mapOptions = {
-        zoom: 13,
-        center: new google.maps.LatLng(41.8731862, -87.6253513),
+        zoom: cities[0].zoom,
+        center: new google.maps.LatLng(cities[0].latitude, cities[0].longitude),
         mapTypeId: google.maps.MapTypeId.TERRAIN
     }
 
