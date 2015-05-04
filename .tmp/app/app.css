@@ -6955,6 +6955,20 @@ button.close {
   margin-top: 70px;
   border-top: 1px solid #E5E5E5; }
 
+/* My code */
+#map {
+  height: 420px;
+  width: 600px; }
+
+.infoWindowContent {
+  font-size: 14px !important;
+  border-top: 1px solid #ccc;
+  padding-top: 10px; }
+
+h2 {
+  margin-bottom: 0;
+  margin-top: 0; }
+
 .modal-primary .modal-header,
 .modal-info .modal-header,
 .modal-success .modal-header,

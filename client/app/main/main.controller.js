@@ -24,4 +24,6 @@ angular.module('travelbotApp')
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
     });
+
+    
   });
