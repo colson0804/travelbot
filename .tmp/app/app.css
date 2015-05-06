@@ -6993,6 +6993,22 @@ button.close {
   border-top: 0.1em solid gray;
   margin-top: 0.8em; }
 
+.selector {
+  position: absolute;
+  top: 15em;
+  background: white;
+  box-shadow: 0.2em 0.2em 0.5em gray;
+  border-radius: 2em;
+  height: 2em;
+  width: 2em;
+  padding: 0.4em; }
+
+#like {
+  left: 23em; }
+
+#dislike {
+  left: -3em; }
+
 .modal-primary .modal-header,
 .modal-info .modal-header,
 .modal-success .modal-header,

@@ -1,9 +1,11 @@
 
 <div>
   <div id="map"></div>
-  <div id="panels" ng-repeat="place in places">
+  <div id="panels">
     <p id="place-name">{{ place.name }}</p>
     <img ng-src="{{ place.img }}"></img>
     <div id="description"><p>{{ place.description }}</p></div>
+    <div id="dislike" class="selector" ng-click="toggleDislike()"><span class="glyphicon glyphicon-remove"></span></div>
+    <div id="like" class="selector" ng-click="toggleLike()"><span class="glyphicon glyphicon-heart-empty"></span></div>
   </div>
 </div>
