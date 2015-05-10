@@ -7,14 +7,24 @@ def getAttractions(pg):
     content = urllib2.urlopen(url).read()
     soup = BeautifulSoup(content)
     attractionsBox =  soup.find('div',attrs={'id':'FILTERED_LIST'})
+    picLinks = attractionsBox.find_all('a', attrs={'class':'photo_link'})
     attractionsList = attractionsBox.find_all('div', attrs={'class':'property_title'})
-    returnAttractionList=[]
-    for attract in attractionsList:
-        name = attract.find('a')
+    returnInfo=[]
+
+    for attractNum in range(len(attractionsList)):
+        d={}
+        name = attractionsList[attractNum].find('a')
+        u = name.get('href')
+        descrip = getDescription('http://www.tripadvisor.com'+u)
+        img = picLinks[attractNum].find('img').get('src')
+        #print img
         n = name.text
         #print n
-        returnAttractionList.append(n.encode('ascii', 'ignore'))
-    return returnAttractionList
+        d['attractionName'] = n.encode('ascii', 'ignore')
+        d['imageLink'] = img
+        d['description'] = descrip
+        returnInfo.append(d)
+    return returnInfo
         
 def GetListAttractions():
     al=[]
@@ -23,3 +33,14 @@ def GetListAttractions():
         a = getAttractions(pg)
         al=al+a
     return al
+
+def getDescription(url):
+    content = urllib2.urlopen(url).read()
+    soup = BeautifulSoup(content)
+    infoBox = soup.find('div', attrs={'class':'above_the_fold_container scroll_tabs'})
+    c = infoBox.find('div', attrs={'class':'listing_details'})
+    descript = c.text
+    description = descript.encode('ascii', 'ignore')
+    description = description.replace('\n','')
+    return description
+    
