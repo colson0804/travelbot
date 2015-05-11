@@ -6969,17 +6969,24 @@ button.close {
   position: relative;
   z-index: 1;
   /* The z-index should be higher than Google Maps */
-  width: 300px;
-  margin: 60px 65% 0;
+  /*width: 300px;*/
+  height: 100%;
+  width: 22%;
+  margin: 25px 70% 0;
   border-radius: 0.5em;
-  box-shadow: 0.2em 0.2em 0.5em gray;
+  /*
+  box-shadow: 0.2em 0.2em 0.5em gray;*/
   padding: 10px;
   background: white;
-  height: auto;
   color: black; }
 
 #place-name {
-  text-align: center; }
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Helvetica";
+  font-weight: strong;
+  font-size: 20px;
+  font-stretch: expanded; }
 
 #panels img {
   max-height: 100%;
@@ -6991,7 +6998,8 @@ button.close {
   overflow-y: scroll;
   padding: 1em 0em;
   border-top: 0.1em solid gray;
-  margin-top: 0.8em; }
+  margin-top: 0.8em;
+  font-family: "Helvetica"; }
 
 .selector {
   position: absolute;
@@ -7000,14 +7008,18 @@ button.close {
   box-shadow: 0.2em 0.2em 0.5em gray;
   border-radius: 2em;
   height: 2em;
-  width: 2em;
+  width: 10em;
   padding: 0.4em; }
 
 #like {
-  left: 23em; }
+  left: 2%;
+  top: 102%;
+  background: #00CC00; }
 
 #dislike {
-  left: -3em; }
+  right: 2%;
+  top: 102%;
+  background: #B20000; }
 
 .modal-primary .modal-header,
 .modal-info .modal-header,
