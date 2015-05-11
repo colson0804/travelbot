@@ -12,17 +12,18 @@ def getAttractions(pg):
     returnInfo=[]
 
     for attractNum in range(len(attractionsList)):
+        print attractNum
         d={}
         name = attractionsList[attractNum].find('a')
         u = name.get('href')
-        descrip = getDescription('http://www.tripadvisor.com'+u)
+        #descrip = getDescription('http://www.tripadvisor.com'+u)
         img = picLinks[attractNum].find('img').get('src')
         #print img
         n = name.text
         #print n
         d['attractionName'] = n.encode('ascii', 'ignore')
         d['imageLink'] = img
-        d['description'] = descrip
+        #d['description'] = descrip
         returnInfo.append(d)
     return returnInfo
         
@@ -38,9 +39,15 @@ def getDescription(url):
     content = urllib2.urlopen(url).read()
     soup = BeautifulSoup(content)
     infoBox = soup.find('div', attrs={'class':'above_the_fold_container scroll_tabs'})
-    c = infoBox.find('div', attrs={'class':'listing_details'})
-    descript = c.text
-    description = descript.encode('ascii', 'ignore')
-    description = description.replace('\n','')
+    if infoBox is None:
+        description=''
+    else:
+        c = infoBox.find('div', attrs={'class':'listing_details'})
+        if c is None:
+            description=''
+        else:
+            descript = c.text
+            description = descript.encode('ascii', 'ignore')
+            description = description.replace('\n','')       
     return description
     
