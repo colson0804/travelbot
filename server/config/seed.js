@@ -25,12 +25,16 @@ Place.find({}).remove(function() {
     img: 'assets/images/weinercircle.jpg',
     description: 'The Wieners Circle is a hot dog stand in the Lincoln Park neighborhood of Chicago, Illinois, ' +
       'United States.[1] It is famous for four things: its signature Maxwell Street Char-dogs, hamburgers, ' +
-      'cheese fries, and the mutual verbal abuse between the employees and the customers during the late-weekend hours.'
+      'cheese fries, and the mutual verbal abuse between the employees and the customers during the late-weekend hours.',
+    lat: 41.930164,
+    long: -87.643792
   }, {
     name: 'Green Mill',
     img: 'assets/images/greenmill.jpeg',
     description: 'The Green Mill Cocktail Lounge (or Green Mill Jazz Club) is an entertainment venue on Broadway in ' +
-      'Uptown, Chicago. It is known for its jazz and poetry performances, along with its connections to Chicago mob history.'
+      'Uptown, Chicago. It is known for its jazz and poetry performances, along with its connections to Chicago mob history.',
+    lat: 41.969199,
+    long: -87.65989
   }, {
     name: 'Willis Tower',
     img: 'assets/images/willis_tower.jpg',
@@ -40,13 +44,17 @@ Place.find({}).remove(function() {
       'The Willis Tower is the second-tallest building in the United States and the 12th-tallest in the world. ' +
       'More than one million people visit its observation deck each year, making it one of Chicago\'s most popular tourist ' +
       'destinations. The structure was renamed in 2009 by the Willis Group as part of its lease on a portion of the ' +
-      'tower\'s space.'
+      'tower\'s space.',
+    lat: 41.878876,
+    long: -87.635915
   }, {
     name: 'Art Institute of Chicago',
     img: 'assets/images/art_institute.jpg',
     description: 'The Art Institute of Chicago (AIC) is an encyclopedic art museum located in Chicago\'s Grant Park. ' +
       'It features a collection of Impressionist and Post-Impressionist art in its permanent collection. Its holdings ' +
       'also include American art, Old Masters, European and American decorative arts, Asian art, modern and contemporary ' +
-      'art, and architecture and industrial and graphic design. In addition, it houses the Ryerson & Burnham Libraries.'
+      'art, and architecture and industrial and graphic design. In addition, it houses the Ryerson & Burnham Libraries.',
+    lat: 41.879584,
+    long: -87.623713
   });
 });

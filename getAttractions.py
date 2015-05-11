@@ -50,4 +50,7 @@ def getDescription(url):
             description = descript.encode('ascii', 'ignore')
             description = description.replace('\n','')       
     return description
+
+if __name__ == "__main__":
+    GetListAttractions()
     
