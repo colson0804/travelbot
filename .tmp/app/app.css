@@ -6953,7 +6953,8 @@ button.close {
   text-align: center;
   padding: 30px 0;
   margin-top: 70px;
-  border-top: 1px solid #E5E5E5; }
+  border-top: 1px solid #E5E5E5;
+  background: white; }
 
 /* My code */
 #map {
@@ -6969,13 +6970,10 @@ button.close {
   position: relative;
   z-index: 1;
   /* The z-index should be higher than Google Maps */
-  /*width: 300px;*/
   height: 100%;
-  width: 22%;
-  margin: 25px 70% 0;
-  border-radius: 0.5em;
-  /*
-  box-shadow: 0.2em 0.2em 0.5em gray;*/
+  width: 35%;
+  margin: 0px 0px 0px;
+  float: right;
   padding: 10px;
   background: white;
   color: black; }
@@ -6989,8 +6987,8 @@ button.close {
   font-stretch: expanded; }
 
 #panels img {
-  max-height: 100%;
-  max-width: 100%;
+  max-height: 450px;
+  max-width: 450px;
   padding-bottom: 1em; }
 
 #description {
