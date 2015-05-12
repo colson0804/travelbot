@@ -3,29 +3,29 @@
 
 angular.module('travelbotApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
-  
+  $scope.moduleState = 'survey';
   $scope.places = [];
   $scope.liked = [];
   var index = 0;
 
+  // Pull places from our database
   $http.get('/api/places').success(function(places) {
     $scope.places = places;
     socket.syncUpdates('place', $scope.places);
-    // Keep track of current place and only display that
     $scope.place = $scope.places[0];
   });
 
-
-  var cities = [{
+  // Generating start map
+  var city = {
     name: 'Chicago',
     latitude: 41.8731862,
     longitude: -87.6253513,
     zoom: 13
-  }];
+  };
 
   var mapOptions = {
-      zoom: cities[0].zoom,
-      center: new google.maps.LatLng(cities[0].latitude, cities[0].longitude),
+      zoom: city.zoom,
+      center: new google.maps.LatLng(city.latitude, city.longitude),
       mapTypeId: google.maps.MapTypeId.TERRAIN
   };
 
@@ -35,14 +35,11 @@ angular.module('travelbotApp')
   //  Added to $scope.liked array add shift to next place
   //  At end, create itinerary
   $scope.toggleLike = function() {
+    
     $scope.liked.push($scope.place[index]);
     index++;
     if (index >= $scope.places.length) {
-      $scope.place = {
-        name: 'Done!',
-        img: null,
-        description: ''
-      };
+      $scope.moduleState='itinerary';
 
     } else {
       $scope.place = $scope.places[index];
@@ -54,11 +51,7 @@ angular.module('travelbotApp')
   $scope.toggleDislike = function() {
     index++;
     if (index >= $scope.places.length) {
-      $scope.place = {
-        name: 'Done!',
-        img: null,
-        description: ''
-      };
+      $scope.moduleState='itinerary';
 
     } else {
       $scope.place = $scope.places[index];
