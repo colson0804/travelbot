@@ -13,6 +13,7 @@ angular.module('travelbotApp')
     socket.syncUpdates('place', $scope.places);
     // Keep track of current place and only display that
     $scope.place = $scope.places[0];
+    codeAddress()
   });
 
 
@@ -30,6 +31,35 @@ angular.module('travelbotApp')
   };
 
   $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  $scope.geocoder = new google.maps.Geocoder();
+
+
+function codeAddress() {
+    //geocoder = new google.maps.Geocoder();
+    var address = $scope.place.name;
+    console.log(address)
+    $scope.geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        addMarker(results[0].geometry.location)
+      //alert("Latitude: "+results[0].geometry.location.lat());
+      //alert("Longitude: "+results[0].geometry.location.lng());
+      } 
+
+      else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+
+  // Add a marker to the map and push to the array.
+function addMarker(location) {
+  var marker = new google.maps.Marker({
+    position: location,
+    map: $scope.map
+  });
+  markers.push(marker);
+}
+
 
   // User has liked the place
   //  Added to $scope.liked array add shift to next place
