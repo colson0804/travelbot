@@ -44,7 +44,7 @@
 #panels {
     position: relative; 
     z-index: 1; /* The z-index should be higher than Google Maps */
-    height: 80%;
+    height: 100vh;
     width: 35%;
     margin: 0px 0px 0px;
     float: right;
@@ -102,4 +102,10 @@
     right: 3%;
     top: 102%;
     background: #B20000;
+}
+
+#schedule {
+    position: relative;
+    overflow: scroll;
+    height: 75%;
 }

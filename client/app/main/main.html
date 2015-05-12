@@ -5,6 +5,7 @@
   <div id="map"></div>
   <!-- Module -->
   <div id="panels" ng-switch="moduleState">
+    <!-- This is the view where we are swiping through the events -->
     <div ng-switch-when="survey">
       <p id="place-name">{{ place.name }}</p>
 
@@ -19,8 +20,48 @@
       <div id="like" class="selector" ng-click="toggleLike()"><center><span class="glyphicon glyphicon-heart-empty"></span></center>
       </div>
     </div>
+    <!-- This is the itinerary view -->
     <div ng-switch-when="itinerary">
-      <p>Yayy!</p>
+      <h2>Itinerary:</h2>
+      <!--Navbar header-->
+      <nav class="navbar navbar-default navbar-static" id="itinNavbar">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="#day1">Day 1</a>
+              </li>
+              <li>
+                <a href="#day2">Day 2</a>
+              </li>
+              <li>
+                <a href="#day3">Day 3</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      </div>
+      <div id="schedule" data-spy="scroll" data-target="#itinNavbar">
+        <h3 id="day1">Day 1</h3>
+        <h4>{{ day1Morning.name }}</h4>
+        <p>{{ day1Morning.description }}</p>
+        <h4>{{ day1Lunch.name }}</h4>
+        <p>{{ day1Lunch.description }}</p>
+        
+        <h3 id="day2">Day 2</h3>
+        <h4>{{ day1Morning.name }}</h4>
+        <p>{{ day1Morning.description }}</p>
+        <h4>{{ day1Lunch.name }}</h4>
+        <p>{{ day1Lunch.description }}</p>
+
+        <h3 id="day3">Day 3</h3>
+        <h4>{{ day1Morning.name }}</h4>
+        <p>{{ day1Morning.description }}</p>
+        <h4>{{ day1Lunch.name }}</h4>
+        <p>{{ day1Lunch.description }}</p>
+      </div>
     </div>
   </div>
   <div id="map"></div>

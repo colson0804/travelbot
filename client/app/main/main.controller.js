@@ -3,7 +3,7 @@
 
 angular.module('travelbotApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
-  $scope.moduleState = 'survey';
+  $scope.moduleState = 'itinerary';
   $scope.places = [];
   $scope.liked = [];
   var index = 0;
@@ -12,9 +12,16 @@ angular.module('travelbotApp')
   $http.get('/api/places').success(function(places) {
     $scope.places = places;
     socket.syncUpdates('place', $scope.places);
-    shuffle($scope.places);
+    //shuffle($scope.places);
     $scope.place = $scope.places[0];
-    codeAddress()
+    codeAddress();
+
+    $scope.day1Morning = $scope.places[0];
+    $scope.day1Lunch = $scope.places[1];
+    $scope.day1Afternoon = $scope.places[2];
+    $scope.day1Dinner = $scope.places[3];
+    $scope.day1Evening = $scope.places[4];
+    $scope.day2Morning = $scope.places[5];
   });
 
   // Generating start map
@@ -96,8 +103,12 @@ function addMarker(location) {
 
   // From our liked array, we will generate a new itinerary, possibly 
   // in our link below
-  $scope.itinerary = {
-    day1Morning: $scope.places[0]
-  };
+
+  // $scope.day1Morning: $scope.places[0],
+  // $scope.day1Lunch: $scope.places[1],
+  // $scope.day1Afternoon: $scope.places[2],
+  // $scope.day1Dinner: $scope.places[3],
+  // $scope.day1Evening: $scope.places[4],
+  // $scope.day2Morning: $scope.places[5]
 
 });

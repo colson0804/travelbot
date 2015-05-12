@@ -19,7 +19,7 @@ Place.find({}).remove(function() {
       'shape. Made up of 168 stainless steel plates welded together, its highly polished exterior has no visible seams. ' +
       'It measures 33 by 66 by 42 feet (10 by 20 by 13 m), and weighs 110 short tons (100 t; 98 long tons).',
     lat: 41.8827,
-    long: 87.6233
+    longit: 87.6233
   }, {
     name: 'Weiner\s Circle',
     img: 'assets/images/weinercircle.jpg',
@@ -27,14 +27,14 @@ Place.find({}).remove(function() {
       'United States.[1] It is famous for four things: its signature Maxwell Street Char-dogs, hamburgers, ' +
       'cheese fries, and the mutual verbal abuse between the employees and the customers during the late-weekend hours.',
     lat: 41.930164,
-    long: -87.643792
+    longit: -87.643792
   }, {
     name: 'Green Mill',
     img: 'assets/images/greenmill.jpeg',
     description: 'The Green Mill Cocktail Lounge (or Green Mill Jazz Club) is an entertainment venue on Broadway in ' +
       'Uptown, Chicago. It is known for its jazz and poetry performances, along with its connections to Chicago mob history.',
     lat: 41.969199,
-    long: -87.65989
+    longit: -87.65989
   }, {
     name: 'Willis Tower',
     img: 'assets/images/willis_tower.jpg',
@@ -46,7 +46,7 @@ Place.find({}).remove(function() {
       'destinations. The structure was renamed in 2009 by the Willis Group as part of its lease on a portion of the ' +
       'tower\'s space.',
     lat: 41.878876,
-    long: -87.635915
+    longit: -87.635915
   }, {
     name: 'Art Institute of Chicago',
     img: 'assets/images/art_institute.jpg',
@@ -55,6 +55,14 @@ Place.find({}).remove(function() {
       'also include American art, Old Masters, European and American decorative arts, Asian art, modern and contemporary ' +
       'art, and architecture and industrial and graphic design. In addition, it houses the Ryerson & Burnham Libraries.',
     lat: 41.879584,
-    long: -87.623713
+    longit: -87.623713
+  }, {
+    name: 'Gino\'s East',
+    img: 'assets/images/ginos.jpg',
+    description: 'Gino\'s East is a Chicago-based restaurant chain, notable for its deep-dish pizza (sometimes called ' +
+      'Chicago-style pizza), and for its interior walls, which patrons have covered in graffiti and etchings. The restaurant ' +
+      'features deep-dish pizza baked in cast-iron pans, as well as sandwiches, soups and salads.',
+    lat: 41.896016,
+    longit: -87.62302599999998
   });
 });

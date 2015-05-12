@@ -8,7 +8,7 @@ var PlaceSchema = new Schema({
   img: String,
   description: String,
   lat: Number,
-  long: Number
+  longit: Number
 });
 
 module.exports = mongoose.model('Place', PlaceSchema);
