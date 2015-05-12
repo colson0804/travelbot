@@ -12,6 +12,7 @@ angular.module('travelbotApp')
   $http.get('/api/places').success(function(places) {
     $scope.places = places;
     socket.syncUpdates('place', $scope.places);
+    shuffle($scope.places);
     $scope.place = $scope.places[0];
   });
 
@@ -56,6 +57,17 @@ angular.module('travelbotApp')
     } else {
       $scope.place = $scope.places[index];
     }
+  };
+
+  function shuffle(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+  };
+
+  // From our liked array, we will generate a new itinerary, possibly 
+  // in our link below
+  $scope.itinerary = {
+    day1Morning: $scope.places[0]
   };
 
 });
