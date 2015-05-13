@@ -2,7 +2,21 @@
 <html>
 
 <div>
+
   <div id="map"></div>
+
+
+  <div id="demo">Enter your city: <input type="text" id="myText" placeholder="Chicago">
+      <center><button id="myButton" onclick="myFunction()">Let's go!</button></center>
+      <script>
+      function myFunction() {
+        $( "div" ).remove( "#demo" );
+      }
+      </script>
+
+  </div>
+
+
   <!-- Module -->
   <div id="panels" ng-switch="moduleState">
     <!-- This is the view where we are swiping through the events -->
@@ -69,7 +83,7 @@
       </div>
     </div>
   </div>
-  <div id="map"></div>
+  
 
 </div>
 </html>
