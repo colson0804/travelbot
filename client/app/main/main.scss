@@ -81,7 +81,7 @@
     right: 0px;
     bottom: 0px;
 
-    padding: 10px;
+    padding: 0.5em;
 
     border-radius: 5px;
     
@@ -102,7 +102,7 @@
 
     background-color: #696969;
     color: #F0F0F5;
-    border-radius: 7px;
+    border-radius: 2%;
 }
 
 #panels img {
@@ -113,19 +113,20 @@
     margin-right: auto;
 
     width: 100%;
-    height: 300px;
+    height: 30%;
 }
 
 #description {
     overflow-y: scroll;
     padding: 1em 0em;
-    font-family: "Helvetica"
+    font-family: "Helvetica";
+    font-size: 1vw;
 
 }
 
 .selector {
     position: absolute;
-    height: 18px;
+    height: 1.2em;
     width: 47%;
     border-radius: 10px;
     vertical-align: middle;
