@@ -41,6 +41,36 @@
     z-index: 0; /* Set z-index to 0 as it will be on a layer below the contact form */
 }
 
+
+#demo {
+    position: absolute;
+    z-index: 1;
+    font-size: 250%;
+    
+    background-color: #F0F0F5;
+    font-family: "Helvetica";
+
+    margin-left: -50px;
+    left: 32%;
+    top: 45%;
+    margin-top: -50px;
+
+    padding: 0.5em;
+    box-shadow: -5px 5px 3px;
+    border-radius: 5px;
+}
+
+#myText {
+    color: black;
+    width: 220px;
+    background: #F5F5F5;
+}
+
+#myButton {
+    font-size: 50%;
+}
+
+
 #panels {
     position: absolute;
     z-index: 1; /* The z-index should be higher than Google Maps */
@@ -55,13 +85,13 @@
 
     border-radius: 5px;
     
-    background: white; 
+    background: #F0F0F5; 
     box-shadow: -2px 0px 2px white;
 }
 
 #place-name {
     position:relative;
-    z-index: 99;
+    z-index: 2;
 
 
     text-align: center;
@@ -71,7 +101,8 @@
     font-size: 3vw;
 
     background-color: #696969;
-    color: white;
+    color: #F0F0F5;
+    border-radius: 7px;
 }
 
 #panels img {
@@ -88,43 +119,28 @@
 #description {
     overflow-y: scroll;
     padding: 1em 0em;
-    font-family: "Helvetica", monospace;
+    font-family: "Helvetica"
 
 }
 
 .selector {
-    /*
     position: absolute;
-    top: 15em;
-    background: white;
-    box-shadow: 0.2em 0.2em 0.5em gray;
-    border-radius: 2em;
-    height: 2em;
-    width: 10em;
-    padding: 0.4em;*/
-}
-
-#like {
-    position: absolute;
-
     height: 18px;
     width: 47%;
     border-radius: 10px;
-
+    vertical-align: middle;
     top: 95%;
+}
+
+#like {
+
     left: 3%;
     background: #00CC00;
 
 }
 
 #dislike {
-    position: absolute;
 
-    height: 18px;
-    width: 47%;
-    border-radius: 10px;
-
-    top: 95%;
     right: 3%;
     background: #B20000;
 }
