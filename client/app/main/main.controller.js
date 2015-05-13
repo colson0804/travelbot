@@ -3,7 +3,7 @@
 
 angular.module('travelbotApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
-  $scope.moduleState = 'itinerary';
+  $scope.moduleState = 'survey';
   $scope.places = [];
   $scope.liked = [];
   var index = 0;
