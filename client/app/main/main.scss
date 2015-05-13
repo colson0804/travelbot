@@ -107,5 +107,10 @@
 #schedule {
     position: relative;
     overflow: scroll;
-    height: 75%;
+    height: 85vh;
+}
+
+.head {
+    border-bottom: 0.1em solid gray;
+    width: 90%;
 }
