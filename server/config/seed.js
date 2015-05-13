@@ -29,13 +29,6 @@ Place.find({}).remove(function() {
     lat: 41.930164,
     longit: -87.643792
   }, {
-    name: 'Green Mill',
-    img: 'assets/images/greenmill.jpeg',
-    description: 'The Green Mill Cocktail Lounge (or Green Mill Jazz Club) is an entertainment venue on Broadway in ' +
-      'Uptown, Chicago. It is known for its jazz and poetry performances, along with its connections to Chicago mob history.',
-    lat: 41.969199,
-    longit: -87.65989
-  }, {
     name: 'Willis Tower',
     img: 'assets/images/willis_tower.jpg',
     description: 'The Willis Tower, built as and still commonly referred to as Sears Tower, is a 108-story, 1,451-foot ' +
@@ -48,6 +41,21 @@ Place.find({}).remove(function() {
     lat: 41.878876,
     longit: -87.635915
   }, {
+    name: 'Gino\'s East',
+    img: 'assets/images/ginos.jpg',
+    description: 'Gino\'s East is a Chicago-based restaurant chain, notable for its deep-dish pizza (sometimes called ' +
+      'Chicago-style pizza), and for its interior walls, which patrons have covered in graffiti and etchings. The restaurant ' +
+      'features deep-dish pizza baked in cast-iron pans, as well as sandwiches, soups and salads.',
+    lat: 41.896016,
+    longit: -87.62302599999998
+  }, {
+    name: 'Green Mill',
+    img: 'assets/images/greenmill.jpeg',
+    description: 'The Green Mill Cocktail Lounge (or Green Mill Jazz Club) is an entertainment venue on Broadway in ' +
+      'Uptown, Chicago. It is known for its jazz and poetry performances, along with its connections to Chicago mob history.',
+    lat: 41.969199,
+    longit: -87.65989
+  }, {
     name: 'Art Institute of Chicago',
     img: 'assets/images/art_institute.jpg',
     description: 'The Art Institute of Chicago (AIC) is an encyclopedic art museum located in Chicago\'s Grant Park. ' +
@@ -57,12 +65,31 @@ Place.find({}).remove(function() {
     lat: 41.879584,
     longit: -87.623713
   }, {
-    name: 'Gino\'s East',
-    img: 'assets/images/ginos.jpg',
-    description: 'Gino\'s East is a Chicago-based restaurant chain, notable for its deep-dish pizza (sometimes called ' +
-      'Chicago-style pizza), and for its interior walls, which patrons have covered in graffiti and etchings. The restaurant ' +
-      'features deep-dish pizza baked in cast-iron pans, as well as sandwiches, soups and salads.',
-    lat: 41.896016,
-    longit: -87.62302599999998
+    name: 'Wildberry Pancakes and Cafe',
+    img: 'assets/images/wildberry.jpg',
+    description: 'Pancakes & other big portions of American eats draw hungry folks to this breakfast-lunch cafe.',
+    lat: 41.884927,
+    longit: -87.6231
+  }, {
+    name: 'Cub\'s Game at Wrigley Field',
+    img: 'assets/images/wrigley_field.jpg',
+    description: 'Wrigley Field is a stadium located in Chicago, Illinois, United States, and the home ballpark of the ' +
+      'Chicago Cubs. It was built in 1914 as Weeghman Park for the Chicago Federal League baseball team, the Chicago Whales.',
+    lat: 41.948438,
+    longit:-87.655333
+  }, {
+    name: 'The Berghoff',
+    img: 'assets/images/berghoff.jpg',
+    description: 'The Berghoff restaurant, at 17 West Adams Street, near the center of the Chicago Loop, was opened in 1898 ' +
+      'by Herman Joseph Berghoff and has become a Chicago landmark.',
+    lat: 41.879252,
+    longit: -87.628406
+  }, {
+    name: 'Steppenwolf Theater',
+    img: 'assets/images/steppenwolf.jpg',
+    description: 'Steppenwolf Theatre Company is a Tony Award-winning Chicago theatre company founded in 1974 by Gary Sinise, ' +
+      'Terry Kinney, and Jeff Perry in the Unitarian church on Half Day Road in Deerfield.',
+    lat: 41.911834,
+    longit: -87.64868
   });
 });
