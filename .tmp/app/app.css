@@ -6967,40 +6967,43 @@ button.close {
   /* Set z-index to 0 as it will be on a layer below the contact form */ }
 
 #panels {
-  position: relative;
+  position: absolute;
   z-index: 1;
   /* The z-index should be higher than Google Maps */
-  height: 100vh;
-  width: 35%;
-  margin: 0px 0px 0px;
-  float: right;
-  padding: 20px;
-  background: white;
-  color: black; }
+  height: 100%;
+  width: 30%;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  padding: 10px;
+  border-radius: 5px;
+  background: white; }
 
 #place-name {
+  position: relative;
+  z-index: 99;
   text-align: center;
   text-transform: uppercase;
   font-family: "Helvetica";
-  font-weight: strong;
-  font-size: 50px;
-  background-color: black;
+  font-size: 3vw;
+  background-color: #696969;
   color: white; }
 
 #panels img {
-  max-height: 450px;
-  max-width: 450px;
-  padding-bottom: 1em; }
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 300px; }
 
 #description {
-  max-height: 20em;
   overflow-y: scroll;
   padding: 1em 0em;
-  border-top: 0.1em solid gray;
-  margin-top: 0.8em;
-  font-family: "Helvetica"; }
+  font-family: "Helvetica", monospace; }
 
 .selector {
+  /*
   position: absolute;
   top: 15em;
   background: white;
@@ -7008,16 +7011,24 @@ button.close {
   border-radius: 2em;
   height: 2em;
   width: 10em;
-  padding: 0.4em; }
+  padding: 0.4em;*/ }
 
 #like {
+  position: absolute;
+  height: 18px;
+  width: 47%;
+  border-radius: 10px;
+  top: 95%;
   left: 3%;
-  top: 102%;
   background: #00CC00; }
 
 #dislike {
+  position: absolute;
+  height: 18px;
+  width: 47%;
+  border-radius: 10px;
+  top: 95%;
   right: 3%;
-  top: 102%;
   background: #B20000; }
 
 #schedule {
