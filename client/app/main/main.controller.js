@@ -42,13 +42,13 @@ angular.module('travelbotApp')
 
 function codeAddress() {
     //geocoder = new google.maps.Geocoder();
-    var address = $scope.place.name;
-    console.log(address);
+    var address = $scope.place.name + ' in Chicago';
+    //console.log(address);
     $scope.geocoder.geocode( { 'address': address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         addMarker(results[0].geometry.location);
-      //alert("Latitude: "+results[0].geometry.location.lat());
-      //alert("Longitude: "+results[0].geometry.location.lng());
+      //console.log("Latitude: "+results[0].geometry.location.lat());
+      //console.log("Longitude: "+results[0].geometry.location.lng());
       } 
 
       else {
@@ -59,11 +59,30 @@ function codeAddress() {
 
   // Add a marker to the map and push to the array.
 function addMarker(location) {
+  deleteMarkers();
   var marker = new google.maps.Marker({
     position: location,
     map: $scope.map
   });
   markers.push(marker);
+}
+
+// Sets the map on all markers in the array.
+function setAllMap(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setAllMap(null);
+}
+
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
 }
 
 
@@ -79,6 +98,7 @@ function addMarker(location) {
 
     } else {
       $scope.place = $scope.places[index];
+      codeAddress();
     }
   };
 
@@ -91,6 +111,7 @@ function addMarker(location) {
 
     } else {
       $scope.place = $scope.places[index];
+      codeAddress();
     }
   };
 
