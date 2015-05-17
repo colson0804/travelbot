@@ -50,6 +50,7 @@ function codeAddress() {
     //console.log(address);
     $scope.geocoder.geocode( { 'address': address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
+        $scope.map.panTo(results[0].geometry.location);
         addMarker(results[0].geometry.location);
       //console.log("Latitude: "+results[0].geometry.location.lat());
       //console.log("Longitude: "+results[0].geometry.location.lng());
@@ -63,7 +64,7 @@ function codeAddress() {
 
   // Add a marker to the map and push to the array.
 function addMarker(location) {
-  deleteMarkers();
+  //deleteMarkers();
   var marker = new google.maps.Marker({
     position: location,
     map: $scope.map
@@ -120,7 +121,7 @@ function deleteMarkers() {
 
     } else {
       $scope.place = $scope.places[index];
-      codeAddress();
+      //codeAddress();
     }
   };
 
