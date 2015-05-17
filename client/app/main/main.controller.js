@@ -19,8 +19,12 @@ angular.module('travelbotApp')
     $scope.place = $scope.places[0];
     codeAddress();
 
-    $scope.itinerary = $scope.places;
+    //$scope.itinerary = $scope.places;
   });
+
+  /*******************************************************/
+  /* MAP FUNCTIONS                                       */
+  /*******************************************************/
 
   // Generating start map
   var city = {
@@ -85,6 +89,10 @@ function deleteMarkers() {
   markers = [];
 }
 
+ /*******************************************************/
+ /* ITINERARY FUNCTIONS                                 */
+ /*******************************************************/
+
 
   // User has liked the place
   //  Added to $scope.liked array add shift to next place
@@ -114,6 +122,10 @@ function deleteMarkers() {
       codeAddress();
     }
   };
+
+ /*******************************************************/
+ /* HELPER FUNCTIONS                                    */
+ /*******************************************************/
 
   // function shuffle(o) {
   //   for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
