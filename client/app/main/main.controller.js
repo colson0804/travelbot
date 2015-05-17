@@ -100,6 +100,7 @@ function deleteMarkers() {
   $scope.toggleLike = function() {
     
     $scope.liked.push($scope.place[index]);
+    
     index++;
     if (index >= max_survey) {
       $scope.moduleState='itinerary';
