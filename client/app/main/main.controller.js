@@ -19,7 +19,7 @@ angular.module('travelbotApp')
     $scope.place = $scope.places[0];
     codeAddress();
 
-    //$scope.itinerary = $scope.places;
+    $scope.itinerary = $scope.places;
   });
 
   /*******************************************************/
