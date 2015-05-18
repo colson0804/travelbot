@@ -7004,11 +7004,12 @@ html {
   padding: 0.5em;
   border-radius: 5px;
   background: #F0F0F5;
-  box-shadow: -2px 0px 2px white; }
+  box-shadow: -2px 0px 2px white;
+  overflow: auto;
+  overflow-y: scroll; }
 
 #place-name {
   position: relative;
-  z-index: 2;
   text-align: center;
   text-transform: uppercase;
   font-family: "Helvetica";
@@ -7023,15 +7024,18 @@ html {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-height: 20%;
-  max-height: 350px; }
+  height: 30%;
+  max-width: 800px;
+  max-height: 550px; }
 
 #description {
+  overflow: auto;
   overflow-y: scroll;
   padding: 1em 0em;
   font-family: "Helvetica";
   font-size: 1vw;
-  letter-spacing: 0.05em; }
+  letter-spacing: 0.05em;
+  height: 40%; }
 
 .selector {
   border-radius: 50%;
@@ -7049,7 +7053,6 @@ html {
   border-radius: 42px;
   cursor: pointer;
   color: white;
-  font-family: Arial;
   font-size: 19px;
   font-weight: bold;
   padding: 24px 24px;
@@ -7070,7 +7073,6 @@ html {
   border-radius: 42px;
   cursor: pointer;
   color: white;
-  font-family: Arial;
   font-size: 19px;
   font-weight: bold;
   padding: 24px 24px;
