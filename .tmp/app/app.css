@@ -6929,6 +6929,9 @@ button.close {
   color: #000;
   padding: 0.2em 0; }
 
+html {
+  background-color: white; }
+
 .thing-form {
   margin: 20px 0; }
 
