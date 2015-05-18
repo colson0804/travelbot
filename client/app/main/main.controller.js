@@ -7,6 +7,8 @@ angular.module('travelbotApp')
   $scope.moduleState = 'survey';
   $scope.places = [];
   $scope.liked = [];
+  $scope.tagCount = {};
+  $scope.itinerary = [];
   var markers = [];
   var index = 0;
   var max_survey = 5;
@@ -19,7 +21,7 @@ angular.module('travelbotApp')
     $scope.place = $scope.places[0];
     codeAddress();
 
-    $scope.itinerary = $scope.places;
+    //$scope.itinerary = $scope.places;
   });
 
   /*******************************************************/
@@ -94,18 +96,17 @@ function deleteMarkers() {
  /* ITINERARY FUNCTIONS                                 */
  /*******************************************************/
 
-
   // User has liked the place
   //  Added to $scope.liked array add shift to next place
   //  At end, create itinerary
   $scope.toggleLike = function() {
     
-    $scope.liked.push($scope.place[index]);
-    
+    $scope.liked.push($scope.places[index]);
+    $scope.updateTagCount();
     index++;
     if (index >= max_survey) {
       $scope.moduleState='itinerary';
-
+      $scope.createItinerary();
     } else {
       $scope.place = $scope.places[index];
       codeAddress();
@@ -118,12 +119,88 @@ function deleteMarkers() {
     index++;
     if (index >= max_survey) {
       $scope.moduleState='itinerary';
-
+      $scope.createItinerary();
     } else {
       $scope.place = $scope.places[index];
       //codeAddress();
     }
   };
+
+  // Increments the tag count for the 'liked' event
+  $scope.updateTagCount = function() {
+    for (var i=0; i < $scope.place.tags.length; i++) {
+      if ($scope.tagCount[$scope.place.tags[i]]) {
+        $scope.tagCount[$scope.place.tags[i]]++;
+      } else {
+        $scope.tagCount[$scope.place.tags[i]] = 1;
+      }
+    }
+  };
+
+  $scope.createItinerary = function() {
+    // Generate scores for each event based on tags
+    $scope.scoring();
+
+    // Filter out all places with food tags
+    var food = $scope.places.filter(function (el) {
+      return $scope.contains(el.tags, 'Restaurants/Bars');
+    });
+    $scope.places = $scope.places.filter(function (el) {
+      return !$scope.contains(el.tags, 'Restaurants/Bars');
+    });
+
+    // Filter out all places with nightlife.. 
+    // (Once we have hours we can do this differently)
+    // var nightlife = $scope.places.filter(function (el) {
+    //   return $scope.contains(el.tags, 'Nightlife');
+    // });
+
+    // Sort out remaining events according to score
+    $scope.places.sort(function(a, b) {
+      return b.score-a.score;
+    });
+
+    // Add nightlife back in
+
+    // Pick top events for tags
+    $scope.itinerary[2] = $scope.places.shift();
+    $scope.itinerary[7] = $scope.places.shift();
+    $scope.itinerary[4] = $scope.places.shift();
+    $scope.itinerary[9] = $scope.places.shift();
+    $scope.itinerary[0] = $scope.places.shift();
+    $scope.itinerary[5] = $scope.places.shift();
+    // Select 4 food tags
+    $scope.itinerary[3] = food.shift();
+    $scope.itinerary[8] = food.shift();
+    $scope.itinerary[1] = food.shift();
+    $scope.itinerary[6] = food.shift();
+
+  };
+
+  $scope.scoring = function() {
+    // Determine a score for each place
+    var score, tagName;
+    for (var i=0; i<$scope.places.length; i++) {
+      score = 0;
+      for (var tag in $scope.places[i].tags) {
+        tagName = $scope.places[i].tags[tag];
+        if ($scope.tagCount[tagName]) {  
+          score += $scope.tagCount[tagName];
+        }
+      }
+      $scope.places[i].score = score;
+    }
+  };
+
+  $scope.contains = function(a, str) {
+    for (var i = 0; i < a.length; i++) {
+        if (a[i] === str) {
+            return true;
+        }
+    }
+    return false;
+  };
+
 
  /*******************************************************/
  /* HELPER FUNCTIONS                                    */

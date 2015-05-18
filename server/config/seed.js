@@ -49,7 +49,7 @@ Place.find({}).remove(function() {
     img: 'assets/images/greenmill.jpeg',
     description: 'The Green Mill Cocktail Lounge (or Green Mill Jazz Club) is an entertainment venue on Broadway in ' +
       'Uptown, Chicago. It is known for its jazz and poetry performances, along with its connections to Chicago mob history.',
-    tags: ['Restaurants/Bars', 'Nightlife', 'Landmark/Historic']
+    tags: ['Nightlife', 'Landmark/Historic']
   }, {
     name: 'Art Institute of Chicago',
     img: 'assets/images/art_institute.jpg',
