@@ -35,7 +35,7 @@ angular.module('travelbotApp')
     name: 'Chicago',
     latitude: 41.8731862,
     longitude: -87.6253513,
-    zoom: 13
+    zoom: 14
   };
 
   var mapOptions = {
@@ -82,6 +82,7 @@ function setAllMap(map) {
     markers[i].setMap(map);
   }
 }
+
 
 // Removes the markers from the map, but keeps them in the array.
 function clearMarkers() {
