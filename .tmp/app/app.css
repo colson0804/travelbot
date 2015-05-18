@@ -6978,7 +6978,8 @@ button.close {
   margin-top: -50px;
   padding: 0.5em;
   box-shadow: -5px 5px 3px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  opacity: 10%; }
 
 #myText {
   color: black;
@@ -7019,8 +7020,8 @@ button.close {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  height: 30%;
-  max-height: 300px; }
+  max-height: 20%;
+  max-height: 350px; }
 
 #description {
   overflow-y: scroll;
