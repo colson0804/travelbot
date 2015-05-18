@@ -144,12 +144,14 @@ function deleteMarkers() {
     $scope.scoring();
 
     // Filter out all places with food tags
-    var food = $scope.places.filter(function (el) {
-      return $scope.contains(el.tags, 'Restaurants/Bars');
-    });
-    $scope.places = $scope.places.filter(function (el) {
-      return !$scope.contains(el.tags, 'Restaurants/Bars');
-    });
+    // var food = $scope.places.filter(function (el) {
+    //   return $scope.contains(el.tags, 'Restaurants/Bars');
+    // });
+    // $scope.places = $scope.places.filter(function (el) {
+    //   return !$scope.contains(el.tags, 'Restaurants/Bars');
+    // });
+
+    [var food, $scope.places] = $scope.removeElementByTag($scope.places, 'Restaurants/Bars');
 
     // Filter out all places with nightlife.. 
     // (Once we have hours we can do this differently)
@@ -157,7 +159,7 @@ function deleteMarkers() {
     //   return $scope.contains(el.tags, 'Nightlife');
     // });
 
-    // Sort out remaining events according to score
+    // Sort out remaining events in descending order by score
     $scope.places.sort(function(a, b) {
       return b.score-a.score;
     });
@@ -202,6 +204,16 @@ function deleteMarkers() {
     }
     return false;
   };
+
+ $scope.removeElementByTag = function(arr, tag) {
+    var ret = arr.filter(function (el) {
+      return $scope.contains(el.tags, tag);
+    });
+    var rem = arr.filter(function (el) {
+      return !$scope.contains(el.tags, tag);
+    });
+    return [ret, rem];
+ }
 
 
  /*******************************************************/
