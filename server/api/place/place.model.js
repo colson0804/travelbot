@@ -7,10 +7,10 @@ var PlaceSchema = new Schema({
   name: String,
   img: String,
   description: String,
-  review: String,
+  //review: String,
   tags: [String],
-  url: String,
-  hours: String
+  url: String
+  //hours: String
 });
 
 module.exports = mongoose.model('Place', PlaceSchema);

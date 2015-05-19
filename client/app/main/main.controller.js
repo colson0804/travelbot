@@ -156,7 +156,7 @@ function deleteMarkers() {
     // (Once we have hours we can do this differently)
     // var nightlife = $scope.places.filter(function (el) {
     //   return $scope.contains(el.tags, 'Nightlife');
-    // });
+    // });t
 
     // Sort out remaining events in descending order by score
     $scope.places.sort(function(a, b) {
