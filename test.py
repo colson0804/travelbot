@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-import urllib2, json, csv, wikipedia, pymongo
-from pymongo import MongoClient
+import urllib2, json, csv, wikipedia
 
 def getVenueID(place):
     query =  place.replace(' ', '%20')
@@ -26,15 +25,17 @@ def getVenueID(place):
 
 def readCSVFile():
     retList=[]
-    #with open('AttractionsList.csv', 'rb') as f:
+    #f = open('AttractionsList.csv', 'rU')
     reader = csv.reader(open('AttractionsList.csv', 'rU'), dialect=csv.excel_tab)
-        #reader = csv.reader(f)
+    #reader = csv.reader(f)
+    rList=[]
     for row in reader:
         #print row
-        retList.append(row)
-    rList=[]
-    for i in range(len(retList)):
-        rList.append(retList[i][0])
+        r = row[0].split(',')
+        name = r[0]
+        tags = r[1:5]
+        ret = [name, tags]
+        rList.append(ret)
     return rList
             
     
@@ -80,10 +81,12 @@ def getDescription(name):
     
 
 def VenueInfo():
-    venueNames = readCSVFile()
+    venueNamesTags = readCSVFile()
     retList=[]
-    for name in venueNames:
+    for i in range(len(venueNamesTags)):
         d={}
+        d['tags']=venueNamesTags[i][1]
+        name = venueNamesTags[i][0]
         try:
             ID=getVenueID(name)
             d['name']=ID[0]
@@ -92,28 +95,13 @@ def VenueInfo():
         try:
             info = getVenueInfo(ID[1])
             d['url']=info[0]
-            d['img']=info[1]
+            d['picture']=info[1]
             descrip = getDescription(name)
             d['description']= descrip
         except:
             print 'problem with info for '+name
         retList.append(d)
     return retList
-
-def populateDatabase(venueList):
-    # Connect to running mongodb database
-    client = pymongo.MongoClient()
-    db = client['travelbot-dev']
-    places = db.places
-    places.remove({})
-    places.insert(venueList)
-
-    #close connection
-    client.close()
-
         
-if __name__ == "__main__":
-    venueList = VenueInfo()
-    populateDatabase(venueList)
-    print venueList     
+        
         
