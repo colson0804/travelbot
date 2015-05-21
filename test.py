@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import urllib2, json, csv, wikipedia
+import urllib2, json, csv, wikipedia, pymongo
+from pymongo import MongoClient
 
 def getVenueID(place):
     query =  place.replace(' ', '%20')
@@ -78,7 +79,17 @@ def getDescription(name):
         d='No Description'
         #print "exception happened!"
     return d
-    
+
+def populateDatabase(venueList):
+   # Connect to running mongodb database
+   client = pymongo.MongoClient()
+   db = client['travelbot-dev']
+   places = db.places
+   places.remove({})
+   places.insert(venueList)
+
+   #close connection
+   client.close()
 
 def VenueInfo():
     venueNamesTags = readCSVFile()
@@ -95,13 +106,18 @@ def VenueInfo():
         try:
             info = getVenueInfo(ID[1])
             d['url']=info[0]
-            d['picture']=info[1]
+            d['img']=info[1]
             descrip = getDescription(name)
             d['description']= descrip
         except:
             print 'problem with info for '+name
         retList.append(d)
     return retList
+
+if __name__ == "__main__":
+   venueList = VenueInfo()
+   populateDatabase(venueList)
+   print venueList   
         
         
         
