@@ -98,11 +98,13 @@ def VenueInfo():
         d={}
         d['tags']=venueNamesTags[i][1]
         name = venueNamesTags[i][0]
+        d['name'] = name
         try:
+            # Get ID from Foursquare
             ID=getVenueID(name)
-            d['name']=ID[0]
+            #d['name']=ID[0]
         except:
-            print 'problem with ID for '+name
+            print 'problem with ID for '+ name
         try:
             info = getVenueInfo(ID[1])
             d['url']=info[0]
@@ -110,7 +112,7 @@ def VenueInfo():
             descrip = getDescription(name)
             d['description']= descrip
         except:
-            print 'problem with info for '+name
+            print 'problem with info for '+ name
         retList.append(d)
     return retList
 
