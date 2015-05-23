@@ -9,8 +9,7 @@ angular.module('travelbotApp')
   $scope.tagProb = {};
   $scope.itinerary = [];
   var markers = [];
-  var index = 0;
-  var maxSurvey = 10;
+  var maxSurvey = 12;
   var itinIndex = 0;
 
   // Pull places from our database
@@ -102,8 +101,7 @@ function deleteMarkers() {
   //  At end, create itinerary
   $scope.toggleLike = function() {  
     updateTagProb();
-    index++;
-    if (index >= maxSurvey) {
+    if (itinIndex >= maxSurvey) {
       $scope.moduleState = 'itinerary';
       //$scope.createItinerary();
     } else {
@@ -116,8 +114,7 @@ function deleteMarkers() {
   // User has not liked the place
   // Discard
   $scope.toggleDislike = function() {
-    index++;
-    if (index >= maxSurvey) {
+    if (itinIndex >= maxSurvey) {
       $scope.moduleState = 'itinerary';
       //$scope.createItinerary();
     } else {
