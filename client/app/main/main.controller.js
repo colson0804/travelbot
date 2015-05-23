@@ -110,6 +110,7 @@ function deleteMarkers() {
       updateItinerary();
       codeAddress();
     }
+    console.log($scope.place);
   };
 
   // User has not liked the place
@@ -120,8 +121,13 @@ function deleteMarkers() {
       $scope.moduleState = 'itinerary';
       //$scope.createItinerary();
     } else {
-      $scope.place = $scope.places[index];
+      if (isMeal(itinIndex)) {
+        $scope.place = $scope.food.shift();
+      } else {
+        $scope.place = $scope.places.shift();
+      }
     }
+    console.log($scope.place);
   };
 
   // Increments the tag count for the 'liked' event
@@ -173,6 +179,7 @@ function deleteMarkers() {
         $scope.places = scoring($scope.places);
         $scope.place = $scope.places.shift();
       }
+
   }
 
 
