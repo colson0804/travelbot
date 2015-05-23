@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://localhost/travelbot-dev'
   },
 
-  seedDB: true
+  seedDB: false
 };
