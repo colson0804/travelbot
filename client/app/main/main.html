@@ -1,30 +1,39 @@
-
 <html>
 
 <head>
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,700,900' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="app/main/main.scss">
+    
 </head>
 
-<div>
-
+<div class="container-fluid">
   <div id="map"></div>
 
-  <!--
-  <div id="demo">Welcome to TravelBot! <input type="text" id="myText" placeholder="Chicago">
-      <center><button id="myButton" onclick="myFunction()">Let's go!</button></center>
-      <script>
-      function myFunction() {
-        $( "div" ).remove( "#demo" );
-      }
-      </script>
-
+  <div class="row">
+    <div class="col-md-1">Morning</div>
+    <div class="col-md-1">Afternoon</div>
+    <div class="col-md-1">Evening</div>
+    <div class="col-md-1">Morning</div>
+    <div class="col-md-1">Afternoon</div>
+    <div class="col-md-1">Evening</div>
+    <div class="col-md-1">Morning</div>
+    <div class="col-md-1">Afternoon</div>
+    <div class="col-md-1">Evening</div>
+    <div class="col-md-1">Morning</div>
+    <div class="col-md-1">Afternoon</div>
+    <div class="col-md-1">Evening</div>
   </div>
-  -->
 
-
-  <!-- Module -->
   <div id="panels" ng-switch="moduleState">
-    <!-- This is the view where we are swiping through the events -->
     <div ng-switch-when="survey">
       <p id="place-name">{{ place.name }}</p>
 
@@ -32,15 +41,18 @@
 
       <div id="description"><p>{{ place.description }}</p>
       </div>
-        
-      <div id="dislike" class="selector" ng-click="toggleDislike()"><center>&#9747;</span></center>
-      </div>
+      <!--
+      <button ng-click="toggleDislike()">Test No</button>
+      <button ng-click="toggleLike()">Test Yes</button>
+    -->
 
-      <div id="like" class="selector" ng-click="toggleLike()"><center>&hearts;</span></center>
+      <div class="selector">
+        <button id="dislike" ng-click="toggleDislike()">Maybe next time.</button>
+        <button id="like" ng-click="toggleLike()">I LOVE it!</button>
       </div>
       
-
     </div>
+
     <!-- This is the itinerary view -->
     <div ng-switch-when="itinerary">
       <h2>Itinerary:</h2>
@@ -98,8 +110,11 @@
           <p>{{ itinerary[11].description }}</p>
         </div>
 
+
       </div>
     </div>
+    
+
   </div>
   
 
