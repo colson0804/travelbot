@@ -189,6 +189,11 @@ html {
 
 #dislike:hover{
     font-weight: 700;
+    background-color: lighten(#DA6161, 5%);
+}
+#dislike:active{
+    font-weight: 400;
+    background-color: darken(#DA6161, 5%);
 }
 
 #like {
@@ -219,8 +224,12 @@ html {
 
 #like:hover{
     font-weight: 700;
+    background-color: lighten(#84B84C, 5%);
 }
-
+#like:active{
+    font-weight: 400;
+    background-color: darken(#84B84C, 5%);
+}
 
 #schedule {
     font-family: 'Raleway', sans-serif;

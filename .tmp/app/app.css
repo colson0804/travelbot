@@ -7070,7 +7070,12 @@ html {
   left: 5%; }
 
 #dislike:hover {
-  font-weight: 700; }
+  font-weight: 700;
+  background-color: #df7676; }
+
+#dislike:active {
+  font-weight: 400;
+  background-color: #d54c4c; }
 
 #like {
   background-color: #84B84C;
@@ -7090,7 +7095,12 @@ html {
   left: 16%; }
 
 #like:hover {
-  font-weight: 700; }
+  font-weight: 700;
+  background-color: #91bf5e; }
+
+#like:active {
+  font-weight: 400;
+  background-color: #77a843; }
 
 #schedule {
   font-family: 'Raleway', sans-serif;
