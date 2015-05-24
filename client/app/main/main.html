@@ -19,18 +19,18 @@
   <div id="map"></div>
 
   <div class="row">
-    <div class="col-md-1">Morning</div>
-    <div class="col-md-1">Afternoon</div>
-    <div class="col-md-1">Evening</div>
-    <div class="col-md-1">Morning</div>
-    <div class="col-md-1">Afternoon</div>
-    <div class="col-md-1">Evening</div>
-    <div class="col-md-1">Morning</div>
-    <div class="col-md-1">Afternoon</div>
-    <div class="col-md-1">Evening</div>
-    <div class="col-md-1">Morning</div>
-    <div class="col-md-1">Afternoon</div>
-    <div class="col-md-1">Evening</div>
+    <div class="col-md-1" id="morning_day1">Morning</div>
+    <div class="col-md-1" id="lunch_day1">Lunch</div>
+    <div class="col-md-1" id="afternoon1_day1">Afternoon 1</div>
+    <div class="col-md-1" id="afternoon2_day1">Afternoon 2</div>
+    <div class="col-md-1" id="dinner_day1">Dinner</div>
+    <div class="col-md-1" id="evening_day1">Evening</div>
+    <div class="col-md-1" id="morning_day2">Morning</div>
+    <div class="col-md-1" id="lunch_day2">Lunch</div>
+    <div class="col-md-1" id="afternoon1_day2">Afternoon 1</div>
+    <div class="col-md-1" id="afternoon2_day2">Afternoon 2</div>
+    <div class="col-md-1" id="dinner_day2">Dinner</div>
+    <div class="col-md-1" id="evening_day2">Evening</div>
   </div>
 
   <div id="panels" ng-switch="moduleState">
@@ -48,7 +48,7 @@
 
       <div class="selector">
         <button id="dislike" ng-click="toggleDislike()">Maybe next time.</button>
-        <button id="like" ng-click="toggleLike()">I LOVE it!</button>
+        <button id="like" ng-click="toggleLike()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I LOVE it!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
       </div>
       
     </div>

@@ -7029,8 +7029,8 @@ html {
   margin-right: auto;
   width: 100%;
   height: 30%;
-  max-width: 800px;
-  max-height: 550px; }
+  max-width: 400px;
+  max-height: 250px; }
 
 #description {
   padding: 1em 0em;
@@ -7038,7 +7038,8 @@ html {
   font-size: 1vw;
   letter-spacing: 0.05em;
   width: 100%;
-  height: 440px;
+  height: auto;
+  max-height: 200px;
   background-color: white;
   overflow-y: auto; }
 
@@ -7047,9 +7048,9 @@ html {
   box-shadow: 0px -10px 10px white;
   position: fixed;
   bottom: 0;
-  height: 5vw;
-  width: 100%;
-  z-index: 2;
+  height: 7vw;
+  width: 30vw;
+  z-index: 1;
   font-family: 'Raleway', sans-serif; }
 
 #dislike {
@@ -7059,15 +7060,15 @@ html {
   box-shadow: 3px 3px 5px #343436;
   border-radius: 10px;
   height: 5vh;
-  width: 8.5vw;
-  font-size: 1.7em;
+  /*width: 8.7vw;*/
+  font-size: 0.9em;
   font-weight: 400;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
   line-height: 220%;
   position: absolute;
-  left: 5%; }
+  left: 18%; }
 
 #dislike:hover {
   font-weight: 700;
@@ -7084,15 +7085,16 @@ html {
   box-shadow: 3px 3px 5px #343436;
   border-radius: 10px;
   height: 5vh;
-  width: 8.5vw;
-  font-size: 1.7em;
+  /*width: 8.7vw;*/
+  font-size: 0.9em;
   font-weight: 400;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
   line-height: 220%;
   position: absolute;
-  left: 16%; }
+  /*left: 16%;*/
+  right: 20%; }
 
 #like:hover {
   font-weight: 700;
