@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import urllib2, json, csv, wikipedia, pymongo
+import urllib2, json, csv, wikipedia, pymongo, simplejson, pickle
+from random import randint
 from pymongo import MongoClient
 
 def getVenueID(place):
@@ -35,7 +36,9 @@ def readCSVFile():
         r = row[0].split(',')
         name = r[0]
         tags = r[1:5]
-        ret = [name, tags]
+        timeTags = r[5:7]
+        description = r[7].replace('"','')
+        ret = [name, tags, timeTags, description]
         rList.append(ret)
     return rList
             
@@ -92,34 +95,73 @@ def populateDatabase(venueList):
    client.close()
 
 def VenueInfo():
-    venueNamesTags = readCSVFile()
-    retList=[]
-    for i in range(len(venueNamesTags)):
-        d={}
-        d['tags']=venueNamesTags[i][1]
-        name = venueNamesTags[i][0]
-        d['name'] = name
-        try:
-            # Get ID from Foursquare
-            ID=getVenueID(name)
-            #d['name']=ID[0]
-        except:
-            print 'problem with ID for '+ name
-        try:
-            info = getVenueInfo(ID[1])
-            d['url']=info[0]
-            d['img']=info[1]
-            descrip = getDescription(name)
-            d['description']= descrip
-        except:
-            print 'problem with info for '+ name
-        retList.append(d)
+    try:
+        tempf = open('ListOfDictionaries.txt','rb')
+        tempu = pickle.Unpickler(tempf)
+        retList = tempu.load()
+        tempf.close()
+    except:
+        venueNamesTags = readCSVFile()
+        inc = 0
+        retList=[]
+        for i in range(len(venueNamesTags)):
+            d={}
+            d['tags']=venueNamesTags[i][1]
+            d['TimeTags']=venueNamesTags[i][2]
+            d['description']=venueNamesTags[i][3]
+            name = venueNamesTags[i][0]
+            d['name'] = name
+            try:
+                # Get ID from Foursquare
+                ID=getVenueID(name)
+                #d['name']=ID[0]
+            except:
+                print 'problem with ID for '+ name
+                print 'getting google img for ' +name
+                img = googleImageSearch(name, inc)
+                inc+=1
+                d['img']=img
+                saveImage(img,name)
+            try:
+                info = getVenueInfo(ID[1])
+                d['url']=info[0]
+                d['img']=info[1]
+                saveImage(info[1],name)
+            except:
+                print 'problem with info for '+ name
+                img = googleImageSearch(name, inc)
+                inc+=1
+                d['img']=img
+                saveImage(img,name)
+            retList.append(d)
+        pickle.dump(retList,open('ListOfDictionaries.txt','wb'))
     return retList
 
-if __name__ == "__main__":
-   venueList = VenueInfo()
-   populateDatabase(venueList)
-   print venueList   
-        
-        
-        
+def googleImageSearch(query, num=0):
+    query=query.replace(' ','+')+'+chicago'
+    #print query
+    i = str(num)
+    url = 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q='+query+'&start='+i+'&userip=MyIP'
+    print url
+    request = urllib2.Request(url,None,{'Referer':'testing'})
+    response = urllib2.urlopen(request)
+    results = simplejson.load(response)
+    a=results['responseData']
+    b=a['results']
+    imageUrl=b[0]["unescapedUrl"]
+    return imageUrl
+    
+def saveImage(url, name):
+    im=urllib2.urlopen(url)
+    fil=open('client/assets/images/'+name, 'w')
+    fil.write(im.read())
+
+    
+
+##if __name__ == "__main__":
+##   venueList = VenueInfo()
+##   populateDatabase(venueList)
+##   print venueList   
+##        
+##        
+##        
