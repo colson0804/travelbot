@@ -169,6 +169,11 @@ function deleteMarkers() {
     arr.sort(function(a, b) {
       return b.score - a.score;
     });
+    console.log(arr);
+    arr.sort(function(a, b) {
+      return b.iconic - a.iconic;
+    });
+    console.log(arr);
     return arr;
   };
 
