@@ -9,7 +9,7 @@ angular.module('travelbotApp')
   $scope.tagProb = {};
   $scope.itinerary = [];
   var markers = [];
-  var maxSurvey = 12;
+  var maxSurvey = 9;
   var itinIndex = 0;
 
   // Pull places from our database
@@ -17,12 +17,10 @@ angular.module('travelbotApp')
     $scope.places = places;
     socket.syncUpdates('place', $scope.places);
     //shuffle($scope.places);
-    $scope.food = filterBy('Restaurants/Bars');
-    $scope.place = $scope.food.shift();
+    $scope.food = filterBy('Food');
+    $scope.place = selectPlaceByTime('Morning');
     codeAddress();
-    console.log($scope.place);
   });
-
 
 
   /*******************************************************/
@@ -50,7 +48,6 @@ angular.module('travelbotApp')
 function codeAddress() {
     //geocoder = new google.maps.Geocoder();
     var address = $scope.place.name + ' in Chicago';
-    //console.log(address);
     $scope.geocoder.geocode( { 'address': address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         $scope.map.panTo(results[0].geometry.location);
@@ -111,9 +108,23 @@ function deleteMarkers() {
       unfade(document.getElementById("place-img"));
       unfade(document.getElementById("description"));
     }
-
-    console.log($scope.place);
   };
+
+  // User has not liked the place
+  // Discard
+  $scope.toggleDislike = function() {
+    if (itinIndex >= maxSurvey) {
+      $scope.moduleState = 'itinerary';
+      //$scope.createItinerary();
+    } else {
+      if (isMeal(itinIndex)) {
+        $scope.place = $scope.food.shift();
+      } else {
+        newLocation();
+      }
+    }
+  };
+
 
   function unfade(element) {
     var op = 0.1;  // initial opacity
@@ -126,24 +137,6 @@ function deleteMarkers() {
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
         op += op * 0.1;
     }, 10);
-  }
-
-
-
-  // User has not liked the place
-  // Discard
-  $scope.toggleDislike = function() {
-    if (itinIndex >= maxSurvey) {
-      $scope.moduleState = 'itinerary';
-      //$scope.createItinerary();
-    } else {
-      if (isMeal(itinIndex)) {
-        $scope.place = $scope.food.shift();
-      } else {
-        $scope.place = $scope.places.shift();
-      }
-    }
-    console.log($scope.place);
   };
 
   // Increments the tag count for the 'liked' event
@@ -155,7 +148,6 @@ function deleteMarkers() {
         $scope.tagProb[$scope.place.tags[i]] = 1;
       }
     }
-    console.log($scope.tagProb);
   };
 
   function scoring(arr) {
@@ -185,18 +177,17 @@ function deleteMarkers() {
       itinIndex++;
 
       // update score of every thing
-      // If we're adding a normal place
+      // If we're adding a restaurant
       if (isMeal(itinIndex)) {
         $scope.food = scoring($scope.food);
-        
         $scope.place = $scope.food.shift();
       } else {
-      // Or if we're adding a food place
+      // Or if we're adding a non-food place
         $scope.places = scoring($scope.places);
-        $scope.place = $scope.places.shift();
+        newLocation();
       }
-
-  }
+      console.log($scope.itinerary);
+  };
 
 
 
@@ -223,12 +214,58 @@ function deleteMarkers() {
     return false;
   };
 
+  function selectPlaceByTime(time) {
+    var arr = $scope.places
+    for (var i=0; i < arr.length; i++) {
+      if (contains(arr[i].TimeTags, time)) {
+        // Select first element matching this time tag
+        return arr.splice(i, 1)[0];
+      }
+    }
+  };
+
+  function newLocation() {
+    if (isMorning(itinIndex)) {
+      $scope.place = selectPlaceByTime('Morning');
+    } else if (isAfternoon(itinIndex)) {
+      $scope.place = selectPlaceByTime('Afternoon');
+    } else {
+      $scope.place = selectPlaceByTime('Evening');
+    }
+  }
+
   function isMeal(index) {
-    if (index % 2 == 0) {
+    if (index == 1 || index == 3 || index == 6 || index == 8) {
       return true;
     } else {
       return false;
     }
   };
+
+  function isMorning(index) {
+    if (index == 0 || index == 5) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  function isAfternoon(index) {
+    if (index == 2 || index == 7) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  function isEvening(index) {
+    if (index == 4 || index == 9) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+
 
 });

@@ -107,12 +107,14 @@ def VenueInfo():
         retList=[]
         for i in range(len(venueNamesTags)):
             d={}
-            d['tags']=venueNamesTags[i][1]
-            iconic=venueNamesTags[i][2]
+
+            iconic=venueNamesTags[i][1]
             if iconic == 'Iconic':
                 d['iconic'] = 1
             else:
                 d['iconic'] = 0
+                
+            d['tags']=venueNamesTags[i][2]
             
             d['TimeTags']=venueNamesTags[i][3]
             d['description']=venueNamesTags[i][4]
