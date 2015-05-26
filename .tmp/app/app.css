@@ -6929,9 +6929,6 @@ button.close {
   color: #000;
   padding: 0.2em 0; }
 
-html {
-  background-color: white; }
-
 .thing-form {
   margin: 20px 0; }
 
@@ -7039,9 +7036,10 @@ html {
   letter-spacing: 0.05em;
   width: 100%;
   height: auto;
-  max-height: 200px;
+  max-height: 250px;
   background-color: white;
-  overflow-y: auto; }
+  overflow-y: auto;
+  text-align: left; }
 
 .selector {
   background-color: white;

@@ -81,15 +81,15 @@ img:hover{
 }
 
 .text-box {
-    background: black;
-    /*background-image: url('/app/main/images/chicagomap.jpg');*/
-
+    /*background: #696969;*/
+    background-image: url('/app/main/images/chicago_sunrise.jpg');
+    font-family: 'Raleway', sans-serif;
     color: rgb(255, 190, 94); /* steel blue */
 }
 
     .text-box-head {
-        color: #fff;
-        padding-bottom: 0.2em;
+        color: white;
+        /*padding-bottom: 0.1em;*/
         font-weight: 400;
         text-transform: uppercase;
         letter-spacing: 0.05em;
