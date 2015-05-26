@@ -9,6 +9,7 @@ var PlaceSchema = new Schema({
   description: String,
   //review: String,
   tags: [String],
+  timeTags: [String],
   url: String
   //hours: String
 });

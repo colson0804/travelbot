@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import urllib2, json, csv, wikipedia, pymongo, simplejson, pickle
+import urllib2, json, csv, wikipedia, pymongo, simplejson, pickle, ssl
 from random import randint
 from pymongo import MongoClient
 
@@ -35,10 +35,11 @@ def readCSVFile():
         #print row
         r = row[0].split(',')
         name = r[0]
-        tags = r[1:5]
+        iconic = r[1]
+        tags = r[2:5]
         timeTags = r[5:7]
         description = r[7].replace('"','')
-        ret = [name, tags, timeTags, description]
+        ret = [name, iconic, tags, timeTags, description]
         rList.append(ret)
     return rList
             
@@ -107,8 +108,14 @@ def VenueInfo():
         for i in range(len(venueNamesTags)):
             d={}
             d['tags']=venueNamesTags[i][1]
-            d['TimeTags']=venueNamesTags[i][2]
-            d['description']=venueNamesTags[i][3]
+            iconic=venueNamesTags[i][2]
+            if iconic == 'Iconic':
+                d['iconic'] = 1
+            else:
+                d['iconic'] = 0
+            
+            d['TimeTags']=venueNamesTags[i][3]
+            d['description']=venueNamesTags[i][4]
             name = venueNamesTags[i][0]
             d['name'] = name
             try:
@@ -132,6 +139,7 @@ def VenueInfo():
                 img = googleImageSearch(name, inc)
                 inc+=1
                 d['img']=img
+                print img
                 saveImage(img,name)
             retList.append(d)
         pickle.dump(retList,open('ListOfDictionaries.txt','wb'))
@@ -152,16 +160,18 @@ def googleImageSearch(query, num=0):
     return imageUrl
     
 def saveImage(url, name):
-    im=urllib2.urlopen(url)
+    context = ssl._create_unverified_context()
+    req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"})
+    im=urllib2.urlopen(req, context=context)
     fil=open('client/assets/images/'+name, 'w')
     fil.write(im.read())
 
     
 
-##if __name__ == "__main__":
-##   venueList = VenueInfo()
-##   populateDatabase(venueList)
-##   print venueList   
-##        
-##        
-##        
+if __name__ == "__main__":
+  venueList = VenueInfo()
+  populateDatabase(venueList)
+  print venueList   
+       
+       
+       
