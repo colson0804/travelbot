@@ -20,6 +20,7 @@ angular.module('travelbotApp')
     $scope.food = filterBy('Food');
     $scope.place = selectPlaceByTime('Morning');
     codeAddress();
+    $scope.image = $scope.place.img;
   });
 
 
@@ -165,18 +166,20 @@ function deleteMarkers() {
     arr.sort(function(a, b) {
       return b.score - a.score;
     });
-    console.log(arr);
     arr.sort(function(a, b) {
       return b.iconic - a.iconic;
     });
-    console.log(arr);
     return arr;
   };
 
   function updateItinerary() {
       $scope.itinerary[itinIndex] = $scope.place;
-      itinIndex++;
 
+      // Add image to bottom row
+
+
+
+      itinIndex++;
       // update score of every thing
       // If we're adding a restaurant
       if (isMeal(itinIndex)) {
@@ -187,7 +190,6 @@ function deleteMarkers() {
         $scope.places = scoring($scope.places);
         newLocation();
       }
-      console.log($scope.itinerary);
   };
 
 
