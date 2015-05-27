@@ -68,6 +68,7 @@ function addMarker(location) {
     map: $scope.map
   });
   markers.push(marker);
+  setAllMap($scope.map)
 }
 
 // Sets the map on all markers in the array.
