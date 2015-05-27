@@ -6966,7 +6966,7 @@ button.close {
   z-index: 0;
   /* Set z-index to 0 as it will be on a layer below the contact form */ }
 
-.row {
+.itin {
   z-index: 2;
   position: fixed;
   bottom: 0;
@@ -6977,10 +6977,10 @@ button.close {
   -webkit-transition: height 1s;
   /* For Safari */ }
 
-.row:hover {
+.itin:hover {
   height: 5.5vw; }
 
-.col-md-1 {
+.itinEvent {
   background: white;
   height: 100%;
   letter-spacing: 1px;
@@ -6990,7 +6990,7 @@ button.close {
   border-color: black;
   border-width: 1px; }
 
-.col-md-1:hover {
+.itinEvent:hover {
   background: #F0F0F5; }
 
 #panels {

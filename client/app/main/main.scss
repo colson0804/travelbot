@@ -43,7 +43,7 @@
 }
 
 
-.row {
+.itin {
     z-index: 2;
 
     position: fixed;
@@ -55,11 +55,11 @@
 
 }
 
-.row:hover{
+.itin:hover{
     height: 5.5vw;
 }
 
-.col-md-1{
+.itinEvent {
     background: white;
     height: 100%;
 
@@ -72,7 +72,7 @@
     border-width: 1px;
 
 }
-.col-md-1:hover{
+.itinEvent:hover{
     background:#F0F0F5; 
 }
 
