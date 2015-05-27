@@ -9,7 +9,7 @@ angular.module('travelbotApp')
   $scope.tagProb = {};
   $scope.itinerary = [];
   var markers = [];
-  var maxSurvey = 10;
+  var maxSurvey = 11;
   var itinIndex = 0;
 
   // Pull places from our database
@@ -98,11 +98,11 @@ function deleteMarkers() {
   //  At end, create itinerary
   $scope.toggleLike = function() {  
     updateTagProb();
-    if (itinIndex >= maxSurvey) {
+    updateItinerary();
+    if (itinIndex > maxSurvey) {
       $scope.moduleState = 'itinerary';
       //$scope.createItinerary();
     } else {
-      updateItinerary();
       codeAddress();
       unfade(document.getElementById("place-name"));
       unfade(document.getElementById("place-img"));
@@ -113,16 +113,12 @@ function deleteMarkers() {
   // User has not liked the place
   // Discard
   $scope.toggleDislike = function() {
-    if (itinIndex >= maxSurvey) {
-      $scope.moduleState = 'itinerary';
-      //$scope.createItinerary();
+    if (isMeal(itinIndex)) {
+      $scope.place = $scope.food.shift();
     } else {
-      if (isMeal(itinIndex)) {
-        $scope.place = $scope.food.shift();
-      } else {
-        newLocation();
-      }
+      newLocation();
     }
+    
   };
 
 
@@ -235,12 +231,12 @@ function deleteMarkers() {
     } else if (isAfternoon(itinIndex)) {
       $scope.place = selectPlaceByTime('Afternoon');
     } else {
-      $scope.place = selectPlaceByTime('Evening');
+      $scope.place = selectPlaceByTime('Night');
     }
   }
 
   function isMeal(index) {
-    if (index == 1 || index == 3 || index == 6 || index == 8) {
+    if (index == 1 || index == 4 || index == 7 || index == 10) {
       return true;
     } else {
       return false;
@@ -248,23 +244,23 @@ function deleteMarkers() {
   };
 
   function isMorning(index) {
-    if (index == 0 || index == 5) {
+    if (index == 0 || index == 6) {
       return true;
     } else {
       return false;
     }
   };
 
-  function isAfternoon(index) {
-    if (index == 2 || index == 7) {
+  function isAfternoon(index) {   // Afternoon or Evening
+    if (index == 2 || index == 3 || index == 8 || index == 9) {
       return true;
     } else {
       return false;
     }
   };
 
-  function isEvening(index) {
-    if (index == 4 || index == 9) {
+  function isNight(index) {
+    if (index == 5 || index == 11) {
       return true;
     } else {
       return false;
