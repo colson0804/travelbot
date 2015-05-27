@@ -49,13 +49,16 @@ angular.module('travelbotApp')
 function codeAddress() {
     //geocoder = new google.maps.Geocoder();
     var address = $scope.place.name + ' in Chicago';
+    console.log(address)
     $scope.geocoder.geocode( { 'address': address}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
+        console.log(results[0].geometry.location)
         $scope.map.panTo(results[0].geometry.location);
         addMarker(results[0].geometry.location);
       } 
 
       else {
+        console.log('did not find coordinates')
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
@@ -63,18 +66,23 @@ function codeAddress() {
 
   // Add a marker to the map and push to the array.
 function addMarker(location) {
+  console.log('adding marker to list')
   //deleteMarkers();
   var marker = new google.maps.Marker({
     position: location,
     map: $scope.map
   });
   markers.push(marker);
+  console.log(markers)
+  setAllMap($scope.map);
 }
 
 // Sets the map on all markers in the array.
 function setAllMap(map) {
   for (var i = 0; i < markers.length; i++) {
+    console.log(i)
     markers[i].setMap(map);
+    console.log(markers[i].setMap(map))
   }
 }
 
@@ -114,6 +122,10 @@ function deleteMarkers() {
   // User has not liked the place
   // Discard
   $scope.toggleDislike = function() {
+    markers[markers.length-1].setMap(null);
+    markers[markers.length-1] = null
+    markers.splice(-1,1)
+    //setAllMap($scope.map)
     if (isMeal(itinIndex)) {
       $scope.place = $scope.food.shift();
     } else {
@@ -235,6 +247,7 @@ function deleteMarkers() {
     } else {
       $scope.place = selectPlaceByTime('Night');
     }
+    codeAddress();
   }
 
   function isMeal(index) {
