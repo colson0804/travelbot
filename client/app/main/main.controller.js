@@ -9,7 +9,7 @@ angular.module('travelbotApp')
   $scope.tagProb = {};
   $scope.itinerary = [];
   var markers = [];
-  var maxSurvey = 9;
+  var maxSurvey = 10;
   var itinIndex = 0;
 
   // Pull places from our database
