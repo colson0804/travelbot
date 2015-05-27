@@ -109,6 +109,8 @@ function deleteMarkers() {
     updateTagProb();
     updateItinerary();
     if (itinIndex > maxSurvey) {
+      var counter_string = "pic" + counter.toString();
+      unfade(document.getElementById(counter_string));
       $scope.moduleState = 'itinerary';
       //$scope.createItinerary();
     } else {
@@ -116,6 +118,9 @@ function deleteMarkers() {
       unfade(document.getElementById("place-name"));
       unfade(document.getElementById("place-img"));
       unfade(document.getElementById("description"));
+      var counter_string = "pic" + counter.toString();
+      unfade(document.getElementById(counter_string));
+      counter++;
     }
   };
 
