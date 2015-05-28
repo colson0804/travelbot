@@ -18,19 +18,21 @@
 <div class="container-fluid">
   <div id="map"></div>
 
+
+  <!--onclick="location.href='{{ places[0].url }}';"-->
   <div class="row">
-    <div class="col-md-1" id="pic1" ng-style="{'background-image': 'url(' + itinerary[0].img + ')'}">Morning</div>
-    <div class="col-md-1" id="pic2" ng-style="{'background-image': 'url(' + itinerary[1].img + ')'}">Lunch</div>
-    <div class="col-md-1" id="pic3" ng-style="{'background-image': 'url(' + itinerary[2].img + ')'}">Afternoon</div>
-    <div class="col-md-1" id="pic4" ng-style="{'background-image': 'url(' + itinerary[3].img + ')'}">Evening</div>
-    <div class="col-md-1" id="pic5" ng-style="{'background-image': 'url(' + itinerary[4].img + ')'}">Dinner</div>
-    <div class="col-md-1" id="pic6" ng-style="{'background-image': 'url(' + itinerary[5].img + ')'}">Night</div>
-    <div class="col-md-1" id="pic7" ng-style="{'background-image': 'url(' + itinerary[6].img + ')'}">Morning</div>
-    <div class="col-md-1" id="pic8" ng-style="{'background-image': 'url(' + itinerary[7].img + ')'}">Lunch</div>
-    <div class="col-md-1" id="pic9" ng-style="{'background-image': 'url(' + itinerary[8].img + ')'}">Afternoon</div>
-    <div class="col-md-1" id="pic10" ng-style="{'background-image': 'url(' + itinerary[9].img + ')'}">Evening</div>
-    <div class="col-md-1" id="pic11" ng-style="{'background-image': 'url(' + itinerary[10].img + ')'}">Dinner</div>
-    <div class="col-md-1" id="pic12" ng-style="{'background-image': 'url(' + itinerary[11].img + ')'}">Night</div>
+    <div class="col-md-1" id="pic1" ng-style="{'background-image': 'url(' + itinerary[0].img + ')'}">Morning: {{ itinerary[0].name }}</div>
+    <div class="col-md-1" id="pic2" ng-style="{'background-image': 'url(' + itinerary[1].img + ')'}">Lunch: {{ itinerary[1].name }}</div>
+    <div class="col-md-1" id="pic3" ng-style="{'background-image': 'url(' + itinerary[2].img + ')'}">Afternoon: {{ itinerary[2].name }}</div>
+    <div class="col-md-1" id="pic4" ng-style="{'background-image': 'url(' + itinerary[3].img + ')'}">Evening: {{ itinerary[3].name }}</div>
+    <div class="col-md-1" id="pic5" ng-style="{'background-image': 'url(' + itinerary[4].img + ')'}">Dinner: {{ itinerary[4].name }}</div>
+    <div class="col-md-1" id="pic6" ng-style="{'background-image': 'url(' + itinerary[5].img + ')'}">Night: {{ itinerary[5].name }}</div>
+    <div class="col-md-1" id="pic7" ng-style="{'background-image': 'url(' + itinerary[6].img + ')'}">Morning: {{ itinerary[6].name }}</div>
+    <div class="col-md-1" id="pic8" ng-style="{'background-image': 'url(' + itinerary[7].img + ')'}">Lunch: {{ itinerary[7].name }}</div>
+    <div class="col-md-1" id="pic9" ng-style="{'background-image': 'url(' + itinerary[8].img + ')'}">Afternoon: {{ itinerary[8].name }}</div>
+    <div class="col-md-1" id="pic10" ng-style="{'background-image': 'url(' + itinerary[9].img + ')'}">Evening: {{ itinerary[9].name }}</div>
+    <div class="col-md-1" id="pic11" ng-style="{'background-image': 'url(' + itinerary[10].img + ')'}">Dinner: {{ itinerary[10].name }}</div>
+    <div class="col-md-1" id="pic12" ng-style="{'background-image': 'url(' + itinerary[11].img + ')'}">Night: {{ itinerary[11].name }}</div>
   </div>
 
   <div id="panels" ng-switch="moduleState">
