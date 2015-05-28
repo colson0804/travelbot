@@ -85,18 +85,19 @@ def getDescription(name):
     return d
 
 def populateDatabase(venueList):
-   # # Connect to running mongodb database
-   # client = pymongo.MongoClient()
-   # db = client['travelbot-dev']
-   # places = db.places
-   # places.remove({})
-   # places.insert(venueList)
+   # Connect to running mongodb database
+   client = pymongo.MongoClient()
+   db = client['travelbot-dev']
+   places = db.places
+   places.remove({})
+   places.insert(venueList)
 
-   # #close connection
-   # client.close()
+   #close connection
+   client.close()
 
-   connection = pymongo.MongoClient("ds041032.mongolab.com", 41032)
-   db = connection['travelbot']
+   connection = pymongo.MongoClient("ds037622.mongolab.com", 37622)
+   db = connection['heroku_app37253653']
+   db.authenticate("colson", "colson")
    places = db.places
    places.remove({})
    places.insert(venueList)
