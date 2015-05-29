@@ -38,7 +38,15 @@ def readCSVFile():
         iconic = r[1]
         tags = r[2:5]
         timeTags = r[5:7]
-        description = r[7].replace('"','')
+        #description = r[7].replace('"','')
+        description = ''
+        for i in range(7, len(r)):
+            if description == '':
+                description = description + r[i] 
+            else:
+                description = description + ', ' + r[i] 
+        if description[0] == '"':
+            description = description[1:-1]
         ret = [name, iconic, tags, timeTags, description]
         rList.append(ret)
     return rList
