@@ -1,28 +1,15 @@
-Set up instructions
+Travelbot is an application that allows a user to create a customized itinerary for a weekend in Chicago. 
 
-Install node (If you don't already have it)
-	brew update
-	brew install node
+A working app is available at https://travelbot2.herokuapp.com.
 
-Install and setup MongoDB
-	brew install mongodb
-	
-	Create data directory
-		mkdir -p /data/db
+Important files and folders
+	- AttractionsList.csv - Contains all of the places we're storing inside our database, as well as additional descriptions and tags
 
-	Set permissions for data directory 
-		chown -R username /data/db
+	- test.py - Reads data from AttractionsList.csv and populates our database with them. Also scrapes the internet for relevant urls and images, which we download onto our server
 
-	Run mongodb
-		mongod
+	- server/api - contains our object model for the places we store in our database
 
-	Before running, may need to add /data/db to your path
-		PATH="$PATH":/data/db/
+	- client/app/main - All of the main files for our application. main.controller.js contains all of our application logic
 
-To build application and run it
-	grunt - for building
-	grunt serve - for preview
-	grunt serve:dist - for preview of built app
-
-See https://github.com/DaftMonk/generator-angular-fullstack for more details 
+	- client/assets/images - All images we pull through test.py are downloaded here to save time loading them
 	

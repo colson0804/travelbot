@@ -23,8 +23,6 @@ def getVenueID(place):
 
 #function to read in locations from csv return
 
-#
-
 def readCSVFile():
     retList=[]
     #f = open('AttractionsList.csv', 'rU')
