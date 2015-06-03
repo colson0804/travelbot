@@ -17,7 +17,7 @@ angular.module('travelbotApp')
   $http.get('/api/places').success(function(places) {
     $scope.places = places;
     socket.syncUpdates('place', $scope.places);
-    //shuffle($scope.places);
+    shuffle($scope.places);
     $scope.food = filterBy('Food');
     $scope.place = selectPlaceByTime('Morning');
     codeAddress();
@@ -183,11 +183,9 @@ function deleteMarkers() {
     arr.sort(function(a, b) {
       return b.score - a.score;
     });
-    //console.log(arr);
     arr.sort(function(a, b) {
       return b.iconic - a.iconic;
     });
-    //console.log(arr);
     return arr;
   };
 
@@ -199,13 +197,13 @@ function deleteMarkers() {
       // If we're adding a restaurant
       if (isMeal(itinIndex)) {
         $scope.food = scoring($scope.food);
-        $scope.place = $scope.food.shift();
+        //$scope.place = $scope.food.shift();
       } else {
       // Or if we're adding a non-food place
         $scope.places = scoring($scope.places);
-        newLocation();
+        //newLocation();
       }
-      console.log($scope.itinerary);
+      newLocation();
   };
 
 
@@ -243,19 +241,54 @@ function deleteMarkers() {
     }
   };
 
+  function selectFoodByTime(time) {
+    var arr = $scope.food;
+    for (var i=0; i < arr.length; i++) {
+      if (contains(arr[i].tags, time)) {
+        // Select first element matching this time tag
+        return arr.splice(i, 1)[0];
+      }
+    }
+  }
+
   function newLocation() {
     if (isMorning(itinIndex)) {
       $scope.place = selectPlaceByTime('Morning');
     } else if (isAfternoon(itinIndex)) {
       $scope.place = selectPlaceByTime('Afternoon');
-    } else {
+    } else if (isNight(itinIndex)) {
       $scope.place = selectPlaceByTime('Night');
+    } else if (isLunch(itinIndex)) {
+      $scope.place = selectFoodByTime('Lunch');
+    } else {
+      $scope.place = selectFoodByTime('Dinner');
     }
     codeAddress();
   }
 
+  function shuffle(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+  }
+
   function isMeal(index) {
     if (index == 1 || index == 4 || index == 7 || index == 10) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  function isLunch(index) {
+    if (index == 1 || index == 7) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  function isDinner(index) {
+    if (index == 4 || index == 10) {
       return true;
     } else {
       return false;
